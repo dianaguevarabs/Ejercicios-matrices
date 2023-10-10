@@ -1,0 +1,68 @@
+//Operaciones aleatorias Diana Guevara 181864
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int main(void) 
+{
+    int n, i, j;
+    srand(time(NULL));
+    printf("Ingrese la longitud de la matriz:");
+    scanf("%d", &n);
+    int A[n][n];
+    printf ("\n");
+    printf("Matriz:\n");
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            A[i][j] = rand() % (9+1-1)+1;
+            printf("%d\t", A[i][j]);
+        }
+        printf("\n");
+    }
+    printf("¿Que operación deseas realizar?\n");
+    printf("1:Suma\n");
+    printf("2:Resta\n");
+    printf("3:Multiplicación\n");
+    printf("4:Suma de la triangular superior\n");
+    scanf("%d", &i);
+    int resultado = 0;
+    switch (i) 
+	{
+        case 1:
+            for (i = 0; i < n; i++) 
+			{
+                resultado += A[i][i];
+            }
+            printf("El resultado de la suma es: %d\n", resultado);
+            break;
+        case 2:
+            for (i = 0; i < n; i++) 
+			{
+                resultado -= A[i][i];
+            }
+            printf("El resultado de la resta es: %d\n", resultado);
+            break;
+        case 3:
+            resultado = 1;
+            for (i = 0; i < n; i++) 
+			{
+                resultado *= A[i][i];
+            }
+            printf("El resultado de la multiplicacion es: %d\n", resultado);
+            break;
+        case 4:
+            resultado = 0;
+            for (i = 0; i < n; i++) 
+			{
+                for (j = i + 1; j < n; j++) 
+				{
+                    resultado += A[i][j];
+                }
+            }
+            printf("El resultado de la suma de la triangular superior es: %d\n", resultado);
+            break;
+        default:
+            printf("No selecciono ninguna de las opciones posibles.\n");
+            break;
+    }
+    return 0;
+}
